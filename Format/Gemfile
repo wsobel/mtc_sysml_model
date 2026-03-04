@@ -8,6 +8,7 @@ gem 'rspec-xml'
 gem 'memoist'
 gem 'uuid'
 gem 'activesupport'
+gem 'debug'
 
 gem 'redcarpet'
 gem 'kramdown'

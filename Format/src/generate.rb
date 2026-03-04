@@ -17,6 +17,7 @@ require 'generate_documentation'
 require 'generate_schema'
 require 'generate_portal'
 require 'generate_validation'
+require 'generate_ghpages'
 require 'type'
 require 'model'
 require 'kramdown'
@@ -85,7 +86,11 @@ operations.each do |op|
   when 'validation'
     validate_generator = ValidationGenerator.new xmi_node.at('//uml:Model')
     validate_generator.generate()
-  
+
+  when 'ghpages'
+    ghpages_generator = GhPagesGenerator.new xmi_node.at('//uml:Model')
+    ghpages_generator.generate()
+
   else
     $logger.error "Invalid option #{op}"
     $logger.fatal parser.help
