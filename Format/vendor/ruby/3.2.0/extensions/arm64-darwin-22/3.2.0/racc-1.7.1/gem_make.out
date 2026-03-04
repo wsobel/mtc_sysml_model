@@ -1,0 +1,22 @@
+current directory: /Users/will/projects/MTConnect/Documentation/mtconnect_sysml_model_dev/Format/vendor/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+/Users/will/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+checking for rb_block_call()... yes
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/will/projects/MTConnect/Documentation/mtconnect_sysml_model_dev/Format/vendor/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20231002-25464-rr375z sitelibdir\=./.gem.20231002-25464-rr375z clean
+
+current directory: /Users/will/projects/MTConnect/Documentation/mtconnect_sysml_model_dev/Format/vendor/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20231002-25464-rr375z sitelibdir\=./.gem.20231002-25464-rr375z
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+ld: warning: -multiply_defined is obsolete
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/will/projects/MTConnect/Documentation/mtconnect_sysml_model_dev/Format/vendor/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20231002-25464-rr375z sitelibdir\=./.gem.20231002-25464-rr375z install
+/opt/homebrew/bin/ginstall -c -m 0755 cparse.bundle ./.gem.20231002-25464-rr375z/racc
+
+current directory: /Users/will/projects/MTConnect/Documentation/mtconnect_sysml_model_dev/Format/vendor/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20231002-25464-rr375z sitelibdir\=./.gem.20231002-25464-rr375z clean
