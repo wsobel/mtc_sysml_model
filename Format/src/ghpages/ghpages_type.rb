@@ -77,10 +77,14 @@ class GhPagesType < Type
       end
     end
 
-    f.puts "\n## Version Info"
-    f.puts "\n| Introduced | Deprecated | Updated |"
-    f.puts "|---|---|---|"
-    f.puts "| #{intro} | #{dep} |  #{upd} |"
+    f.puts <<EOT
+## Version Info
+
+{: .auto-width }
+| Introduced | Deprecated | Updated |"
+|---|---|---|
+| #{intro} | #{dep} |  #{upd} |
+EOT
   end
 
   def write_parents(f)

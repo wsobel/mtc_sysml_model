@@ -49,6 +49,11 @@ class GhPagesModel < Model
     'Examples'
   ].freeze
 
+  def initialize(*args)
+    super
+    @title = "#{@name} Package"
+  end
+
   def self.generate_pages
     $logger.info "Generating GhPages markdown"
 
@@ -85,23 +90,23 @@ class GhPagesModel < Model
     has_children = !public_types.empty? || !@children.empty?
 
     File.open(File.join(dir, 'index.md'), 'w') do |f|
-      write_frontmatter(f, @name, parent_title, nav_order, has_children, grand_parent)
-      f.puts "\n# #{@name}\n"
+      write_frontmatter(f, @title, parent_title, nav_order, has_children, grand_parent)
+      f.puts "\n# #{@title}\n"
       write_documentation(f)
     end
 
-    $logger.info "Generated page for #{@name}"
+    $logger.info "Generated page for #{@title}"
 
     # Child packages
     ordered_children = @children.sort_by { |c| c.name }
     ordered_children.each_with_index do |child, i|
-      child.generate_page(@name, i + 1, parent_title)
+      child.generate_page(@title, i + 1, parent_title)
     end
 
     # Types within this package
     ordered_types = public_types.sort_by { |t| t.name }
     ordered_types.each_with_index do |type, i|
-      type.generate_page(dir, ordered_children.length + i + 1, @name, parent_title)
+      type.generate_page(dir, ordered_children.length + i + 1, @title, parent_title)
     end
   end
 
