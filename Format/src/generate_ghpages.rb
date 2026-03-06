@@ -21,7 +21,7 @@ class GhPagesGenerator
   end
 
   def generate
-    dir = File.expand_path(File.join('..', '..', 'just-the-docs/model'), File.dirname(__FILE__))
+    dir = File.expand_path(File.join('..', '..', 'docs/model'), File.dirname(__FILE__))
     FileUtils.mkdir_p(dir)
 
     $logger.info "Generating GhPages documentation in #{dir}"
