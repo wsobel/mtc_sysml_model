@@ -11,7 +11,8 @@ class GhPagesGenerator
                        "Simulation",
                        "MTConnect",
                        "Development Process",
-                       "Imports"
+                       "Imports",
+                       "Supporting Documents"
     ]
   end
 
@@ -20,7 +21,7 @@ class GhPagesGenerator
   end
 
   def generate
-    dir = File.expand_path(File.join('..', '..', 'docs'), File.dirname(__FILE__))
+    dir = File.expand_path(File.join('..', '..', 'model'), File.dirname(__FILE__))
     FileUtils.mkdir_p(dir)
 
     $logger.info "Generating GhPages documentation in #{dir}"
@@ -30,7 +31,7 @@ class GhPagesGenerator
     GhPagesModel.output_dir = dir
 
     Stereotype.collect_stereotypes(@xmi)
-    
+
     @top = GhPagesModel.new(nil, @xmi)
     @top.find_data_types
     @top.find_definitions

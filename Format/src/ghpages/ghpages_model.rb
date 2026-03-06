@@ -1,8 +1,11 @@
 require 'model'
 require 'ghpages/ghpages_type'
 require 'ghpages/ghpages_diagram'
+require 'ghpages/helpers'
 
 class GhPagesModel < Model
+  include GhPagesHelpers
+
   @@output_dir = nil
   @@generator  = nil
 
@@ -28,6 +31,10 @@ class GhPagesModel < Model
 
   def generator
     @@generator
+  end
+
+  def model
+    self
   end
 
   # Top-level package ordering (matches portal)
@@ -98,8 +105,6 @@ class GhPagesModel < Model
     end
   end
 
-  private
-
   def public_types
     @types
   end
@@ -116,7 +121,7 @@ class GhPagesModel < Model
   end
 
   def slug(name = @name)
-    name.downcase.gsub(/[^a-z0-9]+/, '-').gsub(/^-|-$/, '')
+    name.gsub(/[^a-z0-9]+/i, '')
   end
 
   def write_frontmatter(f, title, parent, nav_order, has_children, grand_parent = nil)
@@ -133,10 +138,11 @@ class GhPagesModel < Model
   def write_documentation(f)
     return if @documentation.nil? || @documentation.empty?
     @documentation.sections.each do |section|
+      md = convert_markdown(section.text)
       if section.title == 'Definition'
-        f.puts "\n#{section.text}\n"
+        f.puts "\n#{md}\n"
       else
-        f.puts "\n**#{section.title}**\n\n#{section.text}\n"
+        f.puts "\n**#{section.title}**\n\n#{md}\n"
       end
     end
   end
