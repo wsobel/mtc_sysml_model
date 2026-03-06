@@ -33,6 +33,7 @@ class GhPagesType < Type
       write_relations(f)
       write_enumerations(f) if enumeration?
       write_operations(f)
+      write_constraints(f)
     end
   end
 
@@ -69,16 +70,17 @@ class GhPagesType < Type
     intro = introduced
     dep = deprecated
     return unless intro || dep
-    f.puts "\n| Version Info | |\n|---|---|"
-    f.puts "| Introduced | #{intro} |" if intro
-    f.puts "| Deprecated | #{dep} |" if dep
     if updated
-      text = updated.dup
+      upd = updated.dup
       if prior = prior_version(updated)
-        text << " (Previous: #{format_version_link(@name, prior, prior)})"
+        upd << " (Previous: #{format_version_link(@name, prior, prior)})"
       end
-      f.puts "| Updated | #{text} |"
     end
+
+    f.puts "\n## Version Info"
+    f.puts "\n| Introduced | Deprecated | Updated |"
+    f.puts "|---|---|---|"
+    f.puts "| #{intro} | #{dep} |  #{upd} |"
   end
 
   def write_parents(f)
@@ -124,18 +126,36 @@ class GhPagesType < Type
 
     name = r.respond_to?(:association_name) && r.association_name ? r.association_name : r.name
     begin
-      type_name = r.final_target.type.name
+      if r.final_target && r.final_target.type
+        if r.final_target.type.type == 'uml:Class' or r.final_target.type.type == 'uml:Enumeration'
+          page = r.final_target.type.page_path rescue nil
+        end
+      end
+      if page
+        type_name = %{<a href="{% link #{page} %}"><code>#{r.final_target.type.name}</code></a>}
+      elsif r.final_target && r.final_target.type
+        type_name = "<code>#{r.final_target.type.name}</code>"
+      elsif r.final_target
+        type_name = "<code>#{r.final_target.type.name}</code>"
+      else
+        type_name = r.target ? "<code>#{r.target.name}</code>" : 'Unknown'
+      end
+      # puts "Type: #{type_name} for #{r.name} in #{self.name}"
     rescue
-      type_name = ''
+      puts "Error finding type for relation #{r.name} in #{self.name}: #{$!} #{$!.backtrace.join("\n")}"
+      type_name = 'Unknown'
     end
-    name = "~#{name}~" if dep
+    name = "<code>#{name}</code>"
+    if dep
+      name = "<s>#{name}</s>" 
+    end
     mult = r.multiplicity rescue ''
     doc = r.documentation
     if r.association_doc && !r.association_doc.empty?
       doc = "#{doc}\n#{r.association_doc}"
     end
     content = convert_markdown("#{doc} #{text}")
-    f.puts %{<tr><td><code>#{name}</code></td><td><code>#{type_name}</code></td><td>#{int}</td><td>#{dep}</td><td>#{mult}</td>\n<td markdown="block">\n\n#{content}\n\n</td>\n</tr>}
+    f.puts %{<tr><td>#{name}</td><td>#{type_name}</td><td>#{int}</td><td>#{dep}</td><td>#{mult}</td>\n<td markdown="block">\n\n#{content}\n\n</td>\n</tr>}
   end
 
   def write_relations(f)
@@ -147,8 +167,7 @@ class GhPagesType < Type
     return if public_rels.empty?
 
     relations, properties = public_rels.partition do |r|
-      name = r.respond_to?(:association_name) && r.association_name ? r.association_name : r.name
-      name =~ /^(is|has)[A-Z]/
+      r.target && r.target.type.type == 'uml:Class'
     end
 
     unless properties.empty?
@@ -190,8 +209,20 @@ class GhPagesType < Type
     end
   end
 
+  def write_constraints(f)
+    return if @constraints.empty?
+
+    $logger.debug "Adding constraints to #{@name}"
+    f.puts "\n## Constraints"
+
+    f.puts "\n<table><thead><tr><th>Error Message</th><th>OCL Expression</th></tr></thead><tbody>"
+    @constraints.each do |c|
+      f.puts "\n<tr><td markdown=\"block\">\n\n#{convert_markdown(c.documentation)}\n\n</td><td markdown=\"block\">\n\n```\n#{c.ocl}\n```\n\n</td></tr>"
+    end
+    f.puts "\n</tbody></table>"
+  end
 
   def quote_yaml(text)
     text.to_s.include?('"') ? "'#{text}'" : "\"#{text}\""
-  end
+  end  
 end
