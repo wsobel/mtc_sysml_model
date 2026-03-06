@@ -24,7 +24,7 @@ It provides the information and data reported from a piece of equipment with [`D
 
 *Figure Condition Example* shows [`Condition`]({% link model/DeviceInformationModel/DataItems/DataItemTypes/Condition.md %}) type examples for various [`Condition`]({% link model/DeviceInformationModel/DataItems/DataItemTypes/Condition.md %})::`state`: `Normal` (`dataItemId` = `path_system`) and `Warning` (`dataItemId` = `logic_cond`). It also shows an example for when the [`Condition`]({% link model/DeviceInformationModel/DataItems/DataItemTypes/Condition.md %})::`state` is not available (`dataItemId` = `cont_system`).
 
-![Condition Example](/figures/Condition%20Example.png "Condition Example"){: width="80.0%"}
+![Condition Example]({% link figures/mtconnect.png %} "Condition Example"){: width="80.0%"}
 
 > Note: See condition-example for the *XML* representation of the same example.
 

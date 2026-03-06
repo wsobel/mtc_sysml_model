@@ -30,7 +30,7 @@ abstract <span class="hoverterm">Asset<span class="definition" data-term="Asset"
 It is used in the manufacturing process, but is not permanently associated with a single piece of equipment. It can be removed from the piece of equipment without compromising its function, and can be associated with other pieces of equipment during its lifecycle.
 
 
-![Asset](/figures/Asset.png "Asset"){: width="80.0%"}
+![Asset]({% link figures/mtconnect.png %} "Asset"){: width="80.0%"}
 
 > Note: See *Section Assets Schema Diagrams* for XML schema.
 

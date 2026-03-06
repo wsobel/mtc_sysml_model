@@ -16,7 +16,7 @@ layout: default
 
 root entity of an <span class="hoverterm">MTConnectDevices Response Document<span class="definition" data-term="MTConnectDevices Response Document">*response document* published by an *MTConnect Agent* in response to a *probe request*.</span></span> that contains the <span class="hoverterm">Device Information Model<span class="definition" data-term="Device Information Model">*information model* that describes the physical and logical configuration for a piece of equipment and the data that may be reported by that equipment. </span></span> of one or more [`Device`]({% link model/DeviceInformationModel/Device.md %}) entities.
 
-![MTConnectDevices](/figures/MTConnectDevices.png "MTConnectDevices"){: width="80.0%"}
+![MTConnectDevices]({% link figures/mtconnect.png %} "MTConnectDevices"){: width="80.0%"}
 
 > Note: Additional properties of [`MTConnectDevices`]({% link model/Fundamentals/MTConnectProtocol/MTConnectDevicesResponseDocument/MTConnectDevices.md %}) **MAY** be defined for schema and namespace declaration. See *Section Schema and Namespace Declaration Information* for an *XML* example.
 

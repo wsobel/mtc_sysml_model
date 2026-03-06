@@ -11,10 +11,10 @@ layout: default
 
 This section provides semantic information for the [`ConfigurationRelationship`]({% link model/DeviceInformationModel/Configurations/Relationships/ConfigurationRelationship.md %}) entity.
 
-![Relationships](/figures/Relationships.png "Relationships"){: width="80.0%"}
+![Relationships]({% link figures/mtconnect.png %} "Relationships"){: width="80.0%"}
 
 > Note: See *Section Configuration Schema Diagrams* for XML schema.
 
-![Relationship Example](/figures/Relationship%20Example.png "Relationship Example"){: width="80.0%"}
+![Relationship Example]({% link figures/mtconnect.png %} "Relationship Example"){: width="80.0%"}
 
 > Note: See relationship-example for the *XML* representation of the same example.

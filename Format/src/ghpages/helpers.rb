@@ -1,4 +1,5 @@
 require 'active_support/inflector'
+require 'uri'
 
 module GhPagesHelpers
   module Definitions
@@ -136,7 +137,13 @@ module GhPagesHelpers
     content.gsub(/\{\{(.+?)\}\}/) do |m|
       convert_macro(m, expand)
     end.gsub(%r{\((figures/[^.]+\.(?:png|jpg|jpeg|svg))}) do |m|
-      "(/#{$1}"
+      link = URI.decode_uri_component($1)
+      if File.exist?(File.join(File.dirname(__FILE__), '..', '..', 'docs', link))
+        "({% link #{link} %}"
+      else
+        $logger.warn "Cannot find linked file #{link}, skipping"
+        "({% link figures/mtconnect.png %}"
+      end
     end.gsub(/\{: width="([0-9.]+)"\}/) do |m|
       "{: width=\"#{$1.to_f * 100}%\"}"
     end

@@ -12,7 +12,7 @@ This section provides semantic information for the [`Reference`]({% link model/D
 
 [`Reference`]({% link model/DeviceInformationModel/References/Reference.md %}) may be modeled as part of a [`Device`]({% link model/DeviceInformationModel/Device.md %}), [`Component`]({% link model/DeviceInformationModel/Components/Component.md %}) or [`Interface`]({% link model/InterfaceInteractionModel/Interface.md %}) type.
 
-![References](/figures/References.png "References"){: width="80.0%"}
+![References]({% link figures/mtconnect.png %} "References"){: width="80.0%"}
 
 > Note: See *Section References Schema Diagrams* for XML schema of [`Reference`]({% link model/DeviceInformationModel/References/Reference.md %}) and its types.
 

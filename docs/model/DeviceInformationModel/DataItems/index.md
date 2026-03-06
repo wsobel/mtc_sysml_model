@@ -10,7 +10,7 @@ layout: default
 
 This section provides semantic information for the [`DataItem`]({% link model/DeviceInformationModel/DataItems/DataItem.md %}) entity. *Figure DataItems* shows the [`DataItem`]({% link model/DeviceInformationModel/DataItems/DataItem.md %}) model. 
 
-![DataItems](/figures/DataItems.png "DataItems"){: width="80.0%"}
+![DataItems]({% link figures/mtconnect.png %} "DataItems"){: width="80.0%"}
 
 > Note: See *Section DataItems Schema Diagrams* for XML schema.
 

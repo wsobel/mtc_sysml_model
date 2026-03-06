@@ -27,7 +27,7 @@ layout: default
 
 *Figure VariableDataSet* shows the model for [`Variable`]({% link model/WIPDeviceExamples/MillwSmoothG/Representation/Variable.md %}) ([`Event`]({% link model/DeviceInformationModel/DataItems/DataItemTypes/Event.md %}) type) with a [`Representation`]({% link model/ObservationInformationModel/Representations/Representation.md %}) type of [`DataSet`]({% link model/ReferenceAgentArchitecture/InformationModel/DataSet.md %}). 
 
-![VariableDataSet](/figures/VariableDataSet.png "VariableDataSet"){: width="80.0%"}
+![VariableDataSet]({% link figures/mtconnect.png %} "VariableDataSet"){: width="80.0%"}
 
 > Note: See *Figure DataSet Schema* for XML schema.
 
@@ -37,7 +37,7 @@ The meaning of each [`Entry`]({% link model/ObservationInformationModel/Represen
 
 *Figure DataSet Example* shows [`Event`]({% link model/DeviceInformationModel/DataItems/DataItemTypes/Event.md %}) [`Observation`]({% link model/ReferenceAgentArchitecture/InformationModel/Observation.md %}) type [`Variable`]({% link model/WIPDeviceExamples/MillwSmoothG/Representation/Variable.md %}) with a [`Representation`]({% link model/ObservationInformationModel/Representations/Representation.md %}) type of `DataSet`.
 
-![DataSet Example](/figures/DataSet%20Example.png "DataSet Example"){: width="80.0%"}
+![DataSet Example]({% link figures/mtconnect.png %} "DataSet Example"){: width="80.0%"}
 
 > Note: See dataset-example for the *XML* representation of the same example.
 

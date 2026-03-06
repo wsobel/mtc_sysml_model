@@ -11,10 +11,10 @@ layout: default
 
 This section provides semantic information for the [`SolidModel`]({% link model/DeviceInformationModel/Configurations/SolidModel/SolidModel.md %}) entity.
 
-![SolidModel](/figures/SolidModel.png "SolidModel"){: width="80.0%"}
+![SolidModel]({% link figures/mtconnect.png %} "SolidModel"){: width="80.0%"}
 
 > Note: See *Section Configuration Schema Diagrams* for XML schema.
 
-![SolidModel Example](/figures/SolidModel%20Example.png "SolidModel Example"){: width="80.0%"}
+![SolidModel Example]({% link figures/mtconnect.png %} "SolidModel Example"){: width="80.0%"}
 
 > Note: See solidmodel-example for the *XML* representation of the same example.

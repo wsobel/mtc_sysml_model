@@ -13,7 +13,7 @@ This section lists the [`Measurement`]({% link model/AssetInformationModel/Palle
 
 These [`Measurement`]({% link model/AssetInformationModel/Pallet/Measurements/Measurement.md %}) subtypes for [`CuttingTool`]({% link model/AssetInformationModel/CuttingTool/CuttingTool.md %}) are specific to the entire assembly and **MUST NOT** be used for the [`Measurement`]({% link model/AssetInformationModel/Pallet/Measurements/Measurement.md %}) pertaining to a [`CuttingItem`]({% link model/AssetInformationModel/CuttingTool/CuttingItem/CuttingItem.md %}). *Figure Cutting Tool Measurement 1* and *Figure Cutting Tool Measurement 2* will be used to reference the assembly specific [`Measurement`]({% link model/AssetInformationModel/Pallet/Measurements/Measurement.md %}) subtypes.
 
-![Cutting Tool Measurement 1](/figures/Cutting%20Tool%20Measurement%201.png "Cutting Tool Measurement 1"){: width="80.0%"}
+![Cutting Tool Measurement 1]({% link figures/mtconnect.png %} "Cutting Tool Measurement 1"){: width="80.0%"}
 
-![Cutting Tool Measurement 2](/figures/Cutting%20Tool%20Measurement%202.png "Cutting Tool Measurement 2"){: width="80.0%"}
+![Cutting Tool Measurement 2]({% link figures/mtconnect.png %} "Cutting Tool Measurement 2"){: width="80.0%"}
 

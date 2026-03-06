@@ -10,7 +10,7 @@ layout: default
 
 This section provides semantic information for the [`QIFDocumentWrapper`]({% link model/AssetInformationModel/QIF/QIFDocumentWrapper.md %}) model.
 
-![QIFDocumentWrapper](/figures/QIFDocumentWrapper.png "QIFDocumentWrapper"){: width="80.0%"}
+![QIFDocumentWrapper]({% link figures/mtconnect.png %} "QIFDocumentWrapper"){: width="80.0%"}
 
 > Note: See *Section QIFDocumentWrapper Schema Diagrams* for XML schema.
 

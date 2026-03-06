@@ -10,6 +10,6 @@ layout: default
 
 This section provides semantic information for the [`Representation`]({% link model/ObservationInformationModel/Representations/Representation.md %}) model.
 
-![Representation](/figures/Representation.png "Representation"){: width="80.0%"}
+![Representation]({% link figures/mtconnect.png %} "Representation"){: width="80.0%"}
 
 > Note: See *Section Representation Schema Diagrams* for XML schema.

@@ -11,7 +11,7 @@ layout: default
 
 This section provides semantic information for the [`CuttingToolLifeCycle`]({% link model/AssetInformationModel/CuttingTool/CuttingToolLifeCycle/CuttingToolLifeCycle.md %}) model.
 
-![CuttingToolLifeCycle](/figures/CuttingToolLifeCycle.png "CuttingToolLifeCycle"){: width="80.0%"}
+![CuttingToolLifeCycle]({% link figures/mtconnect.png %} "CuttingToolLifeCycle"){: width="80.0%"}
 
 > Note: See *Section CuttingToolLifeCycle Schema Diagrams* for XML schema.
 

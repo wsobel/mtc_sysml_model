@@ -13,6 +13,6 @@ A [`CuttingItem`]({% link model/AssetInformationModel/CuttingTool/CuttingItem/Cu
 
 MTConnect Standard considers [`CuttingItems`]({% link model/AssetInformationModel/CuttingTool/CuttingItem/CuttingItems.md %}) as part of the [`CuttingTool`]({% link model/AssetInformationModel/CuttingTool/CuttingTool.md %}).  A [`CuttingItems`]({% link model/AssetInformationModel/CuttingTool/CuttingItem/CuttingItems.md %}) **MUST NOT** exist in MTConnect unless it is attached to a [`CuttingTool`]({% link model/AssetInformationModel/CuttingTool/CuttingTool.md %}).  Some of the measurements, such as [`FunctionalLength`]({% link model/AssetInformationModel/CuttingTool/CuttingToolMeasurementSubtypes/FunctionalLength.md %}), **MUST** be made with reference to the entire [`CuttingTool`]({% link model/AssetInformationModel/CuttingTool/CuttingTool.md %}) to be meaningful.
 
-![CuttingItem](/figures/CuttingItem.png "CuttingItem"){: width="80.0%"}
+![CuttingItem]({% link figures/mtconnect.png %} "CuttingItem"){: width="80.0%"}
 
 > Note: See *Section CuttingItem Schema Diagrams* for XML schema.

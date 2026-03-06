@@ -24,7 +24,7 @@ It provides the information and data reported from a piece of equipment for thos
 
 *Figure Event Example* shows [`Event`]({% link model/DeviceInformationModel/DataItems/DataItemTypes/Event.md %}) type examples. It also shows an example for when the [`Observation`]({% link model/ReferenceAgentArchitecture/InformationModel/Observation.md %})::`result` is not available (`dataItemId`=`d1_asset_rem`).
 
-![Event Example](/figures/Event%20Example.png "Event Example"){: width="80.0%"}
+![Event Example]({% link figures/mtconnect.png %} "Event Example"){: width="80.0%"}
 
 > Note: See event-example for the *XML* representation of the same example.
 

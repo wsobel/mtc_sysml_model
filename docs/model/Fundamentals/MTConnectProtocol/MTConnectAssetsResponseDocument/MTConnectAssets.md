@@ -16,7 +16,7 @@ layout: default
 
 root entity of an <span class="hoverterm">MTConnectAssets Response Document<span class="definition" data-term="MTConnectAssets Response Document">*response document* published by an *MTConnect Agent* in response to an *asset request*.</span></span> that contains the <span class="hoverterm">Asset Information Model<span class="definition" data-term="Asset Information Model">*information model* that provides semantic models for *Assets*.</span></span> of [`Asset`]({% link model/AssetInformationModel/Asset.md %}) types.
 
-![MTConnectAssets](/figures/MTConnectAssets.png "MTConnectAssets"){: width="80.0%"}
+![MTConnectAssets]({% link figures/mtconnect.png %} "MTConnectAssets"){: width="80.0%"}
 
 > Note: Additional properties of [`MTConnectAssets`]({% link model/Fundamentals/MTConnectProtocol/MTConnectAssetsResponseDocument/MTConnectAssets.md %}) **MAY** be defined for schema and namespace declaration. See *Section Schema and Namespace Declaration Information* for an *XML* example.
 

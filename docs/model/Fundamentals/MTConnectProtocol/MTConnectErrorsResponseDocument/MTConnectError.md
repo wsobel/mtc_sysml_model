@@ -16,7 +16,7 @@ layout: default
 
 root entity of an <span class="hoverterm">MTConnectErrors Response Document<span class="definition" data-term="MTConnectErrors Response Document">*response document* published by an *MTConnect Agent* whenever it encounters an error while interpreting an *MTConnect Request*.</span></span> that contains the <span class="hoverterm">Error Information Model<span class="definition" data-term="Error Information Model">*information model* that describes the *response document* returned by an *agent* when it encounters an error while interpreting a *request* for information from a *client* or when an *agent* experiences an error while publishing the *response* to a *request* for information.</span></span>.
 
-![MTConnectError](/figures/MTConnectErrors.png "MTConnectError"){: width="80.0%"}
+![MTConnectError]({% link figures/mtconnect.png %} "MTConnectError"){: width="80.0%"}
 
 > Note: Additional properties of [`MTConnectError`]({% link model/Fundamentals/MTConnectProtocol/MTConnectErrorsResponseDocument/MTConnectError.md %}) **MAY** be defined for schema and namespace declaration. See *Section Schema and Namespace Declaration Information* for an *XML* example.
 

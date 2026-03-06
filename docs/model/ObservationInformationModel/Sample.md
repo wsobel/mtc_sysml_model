@@ -26,7 +26,7 @@ It provides the information and data reported from a piece of equipment for thos
 
 *Figure Sample Example* shows [`Sample`]({% link model/DeviceInformationModel/DataItems/DataItemTypes/Sample.md %}) type examples. It also shows an example for when the [`Observation`]({% link model/ReferenceAgentArchitecture/InformationModel/Observation.md %})::`result` is not available (`dataItemId`=`cspeed`).
 
-![Sample Example](/figures/Sample%20Example.png "Sample Example"){: width="80.0%"}
+![Sample Example]({% link figures/mtconnect.png %} "Sample Example"){: width="80.0%"}
 
 > Note: See sample-example for the *XML* representation of the same example.
 

@@ -10,7 +10,7 @@ layout: default
 
 This section provides semantic information for the [`Component`]({% link model/DeviceInformationModel/Components/Component.md %}) entity. *Figure Components* shows the [`Component`]({% link model/DeviceInformationModel/Components/Component.md %}) model. 
 
-![Components](/figures/Components.png "Components"){: width="80.0%"}
+![Components]({% link figures/mtconnect.png %} "Components"){: width="80.0%"}
 
 > Note: See *Section Components Schema Diagrams* for XML schema.
 
@@ -19,7 +19,7 @@ This section provides semantic information for the [`Component`]({% link model/D
 
 [`MTConnectDevices`]({% link model/Fundamentals/MTConnectProtocol/MTConnectDevicesResponseDocument/MTConnectDevices.md %}) provides the physical and logical architecture of a piece of equipment. *Figure Device Entity Hierarchy Example* provides an overview of the entities used in an example of an [`MTConnectDevices`]({% link model/Fundamentals/MTConnectProtocol/MTConnectDevicesResponseDocument/MTConnectDevices.md %}) entity.
 
-![Device Entity Hierarchy Example](/figures/Device%20Entity%20Hierarchy%20Example.png "Device Entity Hierarchy Example"){: width="80.0%"}
+![Device Entity Hierarchy Example]({% link figures/mtconnect.png %} "Device Entity Hierarchy Example"){: width="80.0%"}
 
 > Note 1 to entry: See device-entity-hierarchy-example for the *XML* representation of the same example.
 

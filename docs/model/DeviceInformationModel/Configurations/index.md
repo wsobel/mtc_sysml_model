@@ -10,7 +10,7 @@ layout: default
 
 *Figure Configuration* shows the abstract [`Configuration`]({% link model/DeviceInformationModel/Configurations/Configuration.md %}) and its types.
 
-![Configuration](/figures/Configuration.png "Configuration"){: width="80.0%"}
+![Configuration]({% link figures/mtconnect.png %} "Configuration"){: width="80.0%"}
 
 > Note: See *Section Configuration Schema Diagrams* for XML schema.
 

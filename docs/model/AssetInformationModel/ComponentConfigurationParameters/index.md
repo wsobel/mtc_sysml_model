@@ -10,5 +10,5 @@ layout: default
 
 This section provides semantic information for the [`ComponentConfigurationParameters`]({% link model/AssetInformationModel/ComponentConfigurationParameters/ComponentConfigurationParameters.md %}) model.
 
-![ComponentConfigurationParameters](/figures/ComponentConfigurationParameters.png "ComponentConfigurationParameters"){: width="80.0%"}
+![ComponentConfigurationParameters]({% link figures/mtconnect.png %} "ComponentConfigurationParameters"){: width="80.0%"}
 

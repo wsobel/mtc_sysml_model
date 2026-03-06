@@ -11,10 +11,10 @@ layout: default
 
 This section provides semantic information for the [`Specification`]({% link model/DeviceInformationModel/Configurations/Specifications/Specification.md %}) entity.
 
-![Specifications](/figures/Specifications.png "Specifications"){: width="80.0%"}
+![Specifications]({% link figures/mtconnect.png %} "Specifications"){: width="80.0%"}
 
 > Note: See *Section Configuration Schema Diagrams* for XML schema.
 
-![Specification Example](/figures/Specification%20Example.png "Specification Example"){: width="80.0%"}
+![Specification Example]({% link figures/mtconnect.png %} "Specification Example"){: width="80.0%"}
 
 > Note: See specification-example for the *XML* representation of the same example.

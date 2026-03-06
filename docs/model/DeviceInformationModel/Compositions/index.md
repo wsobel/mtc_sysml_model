@@ -12,7 +12,7 @@ This section provides semantic information for the [`Composition`]({% link model
 
 See *Figure Components* for the [`Composition`]({% link model/DeviceInformationModel/Compositions/Composition.md %}) model diagram.
 
-![Component with Compositions Example](/figures/Component%20with%20Compositions%20Example.png "Component with Compositions Example"){: width="80.0%"}
+![Component with Compositions Example]({% link figures/mtconnect.png %} "Component with Compositions Example"){: width="80.0%"}
 
 > Note: See component-with-compositions-example for the *XML* representation of the same example.
 

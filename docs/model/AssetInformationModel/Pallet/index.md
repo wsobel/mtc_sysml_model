@@ -10,4 +10,4 @@ layout: default
 
 This section provides semantic information for the [`Pallet`]({% link model/AssetInformationModel/Pallet/Pallet.md %}) model.
 
-![Pallet](/figures/Pallet.png "Files"){: width="80.0%"}
+![Pallet]({% link figures/mtconnect.png %} "Files"){: width="80.0%"}

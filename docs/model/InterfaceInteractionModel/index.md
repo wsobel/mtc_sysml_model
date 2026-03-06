@@ -37,7 +37,7 @@ MTConnect Standard is based on a communications method that provides no direct w
 
 > Note: The current definition of <span class="hoverterm">interfaces<span class="definition" data-term="interface">means by which communication is achieved between independent systems.</span></span> addresses the interaction between two pieces of equipment.  Future releases of the MTConnect Standard may address the interaction between multiple (more than two) pieces of equipment.
 
-![Data Flow Architecture for Interfaces](/figures/Data%20Flow%20Architecture%20for%20Interfaces.png "Data Flow Architecture for Interfaces"){: width="80.0%"}
+![Data Flow Architecture for Interfaces]({% link figures/mtconnect.png %} "Data Flow Architecture for Interfaces"){: width="80.0%"}
 
 > Note: The data flow architecture illustrated in *Figure Data Flow Architecture for Interfaces* was historically referred to in the MTConnect Standard as a read-read concept.
 
@@ -55,7 +55,7 @@ The interaction between two pieces of equipment can be described as follows.  Wh
 
 > Note: The implementation details of how the <span class="hoverterm">responder<span class="definition" data-term="responder">entity that responds to a *request* for information in a communications exchange.</span></span> piece of equipment reacts to the <span class="hoverterm">request<span class="definition" data-term="request">communications method where a *client* transmits a message to an *agent*.  That message instructs the *agent* to respond with specific information.</span></span> and then completes the requested task are up to the implementer.
 
-![Request and Response Overview](/figures/Request%20and%20Response%20Overview.png "Request and Response Overview"){: width="80.0%"}
+![Request and Response Overview]({% link figures/mtconnect.png %} "Request and Response Overview"){: width="80.0%"}
 
 The initial condition of both the <span class="hoverterm">request<span class="definition" data-term="request">communications method where a *client* transmits a message to an *agent*.  That message instructs the *agent* to respond with specific information.</span></span> and <span class="hoverterm">response<span class="definition" data-term="response">response *interface* which responds to a *request*.</span></span> states on both pieces of equipment is `READY`.  The dotted lines indicate the on-going communications that occur to monitor the progress of the interactions between the pieces of equipment.
 

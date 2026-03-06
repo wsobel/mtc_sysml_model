@@ -10,7 +10,7 @@ layout: default
 
 This section provides semantic information for the [`RawMaterial`]({% link model/AssetInformationModel/RawMaterial/RawMaterial.md %}) model.
 
-![RawMaterial](/figures/RawMaterial.png "RawMaterial"){: width="50.0%"}
+![RawMaterial]({% link figures/mtconnect.png %} "RawMaterial"){: width="50.0%"}
 
 > Note: See *Section RawMaterial Schema Diagrams* for XML schema.
 

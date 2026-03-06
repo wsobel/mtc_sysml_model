@@ -27,7 +27,7 @@ layout: default
 
 *Figure TemperatureTimeSeries* shows the model for [`Temperature`]({% link model/WIPDeviceExamples/MillwSmoothG/Representation/Temperature.md %}) ([`Sample`]({% link model/DeviceInformationModel/DataItems/DataItemTypes/Sample.md %}) type) with a [`Representation`]({% link model/ObservationInformationModel/Representations/Representation.md %}) type of [`TimeSeries`]({% link model/ReferenceAgentArchitecture/InformationModel/TimeSeries.md %}). 
 
-![TemperatureTimeSeries](/figures/TemperatureTimeSeries.png "TemperatureTimeSeries"){: width="80.0%"}
+![TemperatureTimeSeries]({% link figures/mtconnect.png %} "TemperatureTimeSeries"){: width="80.0%"}
 
 > Note: See *Section Representation Schema Diagrams* for XML schema.
 

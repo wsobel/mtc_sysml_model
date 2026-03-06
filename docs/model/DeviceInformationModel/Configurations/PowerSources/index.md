@@ -11,6 +11,6 @@ layout: default
 
 This section provides semantic information for the [`PowerSource`]({% link model/DeviceInformationModel/Configurations/PowerSources/PowerSource.md %}) entity.
 
-![PowerSources](/figures/PowerSources.png "PowerSources"){: width="80.0%"}
+![PowerSources]({% link figures/mtconnect.png %} "PowerSources"){: width="80.0%"}
 
 

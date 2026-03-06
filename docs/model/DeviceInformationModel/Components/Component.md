@@ -24,7 +24,7 @@ logical or physical entity that provides a capability.
 
 At least one of [`Component`]({% link model/DeviceInformationModel/Components/Component.md %}), [`DataItem`]({% link model/DeviceInformationModel/DataItems/DataItem.md %}), or [`Reference`]({% link model/DeviceInformationModel/References/Reference.md %}) entities **MUST** be provided for a [`Component`]({% link model/DeviceInformationModel/Components/Component.md %}).
 
-![Component Example](/figures/Component%20Example.png "Component Example"){: width="80.0%"}
+![Component Example]({% link figures/mtconnect.png %} "Component Example"){: width="80.0%"}
 
 > Note: See component-example for the *XML* representation of the same example.
 

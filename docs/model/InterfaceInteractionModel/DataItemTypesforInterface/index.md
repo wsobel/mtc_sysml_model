@@ -26,7 +26,7 @@ These data items and their associated `subType` provide the basic structure for 
 
 *Figure Request State Machine* and *Figure Response State Machine* show possible state transitions for a <span class="hoverterm">request<span class="definition" data-term="request">communications method where a *client* transmits a message to an *agent*.  That message instructs the *agent* to respond with specific information.</span></span> and <span class="hoverterm">response<span class="definition" data-term="response">response *interface* which responds to a *request*.</span></span> respectively. The state machine diagrams provide the permissible values of the <span class="hoverterm">observations<span class="definition" data-term="observation">observed value of a property at a point in time.</span></span> for the [`DataItem`]({% link model/DeviceInformationModel/DataItems/DataItem.md %}) types listed in this section.
 
-![Request State Machine](/figures/Request%20State%20Machine.png "Request State Machine"){: width="80.0%"}
+![Request State Machine]({% link figures/mtconnect.png %} "Request State Machine"){: width="80.0%"}
 
-![Response State Machine](/figures/Response%20State%20Machine.png "Response State Machine"){: width="80.0%"}
+![Response State Machine]({% link figures/mtconnect.png %} "Response State Machine"){: width="80.0%"}
 

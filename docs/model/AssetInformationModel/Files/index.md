@@ -10,7 +10,7 @@ layout: default
 
 This section provides semantic information for the [`File`]({% link model/AssetInformationModel/Files/File.md %}) model.
 
-![Files](/figures/Files.png "Files"){: width="80.0%"}
+![Files]({% link figures/mtconnect.png %} "Files"){: width="80.0%"}
 
 > Note: See *Section File Schema Diagrams* for XML schema.
 

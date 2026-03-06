@@ -26,7 +26,7 @@ layout: default
 
 *Figure WorkOffsetTable* shows the model for [`WorkOffset`]({% link model/ObservationInformationModel/ObservationTypes/EventTypes/WorkOffset.md %}) ([`Event`]({% link model/DeviceInformationModel/DataItems/DataItemTypes/Event.md %}) type) with a [`Representation`]({% link model/ObservationInformationModel/Representations/Representation.md %}) type of [`Table`]({% link model/DeviceInformationModel/Components/ComponentTypes/Table.md %}). 
 
-![WorkOffsetTable](/figures/WorkOffsetTable.png "WorkOffsetTable"){: width="80.0%"}
+![WorkOffsetTable]({% link figures/mtconnect.png %} "WorkOffsetTable"){: width="80.0%"}
 
 > Note: See *Section Representation Schema Diagrams* for XML schema.
 
@@ -38,7 +38,7 @@ The meaning of each [`Entry`]({% link model/ObservationInformationModel/Represen
 
 *Figure Table Example* shows [`Event`]({% link model/DeviceInformationModel/DataItems/DataItemTypes/Event.md %}) [`Observation`]({% link model/ReferenceAgentArchitecture/InformationModel/Observation.md %}) type [`WorkOffset`]({% link model/ObservationInformationModel/ObservationTypes/EventTypes/WorkOffset.md %}) with a [`Representation`]({% link model/ObservationInformationModel/Representations/Representation.md %}) type of `Table`.
 
-![Table Example](/figures/Table%20Example.png "Table Example"){: width="80.0%"}
+![Table Example]({% link figures/mtconnect.png %} "Table Example"){: width="80.0%"}
 
 > Note: See table-example for the *XML* representation of the same example.
 

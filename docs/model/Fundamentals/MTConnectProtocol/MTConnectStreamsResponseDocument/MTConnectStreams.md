@@ -16,7 +16,7 @@ layout: default
 
 root entity of an <span class="hoverterm">MTConnectStreams Response Document<span class="definition" data-term="MTConnectStreams Response Document">*response document* published by an *MTConnect Agent* in response to a *current request* or a *sample request*.</span></span> that contains the <span class="hoverterm">Observation Information Model<span class="definition" data-term="Observation Information Model">*information model* that describes the *streaming data* reported by a piece of equipment.</span></span> of one or more [`Device`]({% link model/DeviceInformationModel/Device.md %}) entities.
 
-![MTConnectStreams](/figures/MTConnectStreams.png "MTConnectStreams"){: width="80.0%"}
+![MTConnectStreams]({% link figures/mtconnect.png %} "MTConnectStreams"){: width="80.0%"}
 
 > Note: Additional properties of [`MTConnectStreams`]({% link model/Fundamentals/MTConnectProtocol/MTConnectStreamsResponseDocument/MTConnectStreams.md %}) **MAY** be defined for schema and namespace declaration. See *Section Schema and Namespace Declaration Information* for an *XML* example.
 
