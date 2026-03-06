@@ -1,0 +1,57 @@
+// custom SCSS (or CSS) goes here
+
+// Hover tooltip for {{term(...)}} macros
+// Structure: <span class="hoverterm">term<span class="definition">...body...</span></span>
+.hoverterm {
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+  position: relative;
+
+  .definition {
+    display: none;
+    position: absolute;
+    bottom: 125%;
+    left: 0;
+    min-width: 220px;
+    max-width: 360px;
+    background: #333;
+    color: #fff;
+    font-size: 0.8em;
+    font-style: normal;
+    font-weight: normal;
+    padding: 6px 10px;
+    border-radius: 4px;
+    white-space: normal;
+    word-wrap: break-word;
+    z-index: 200;
+    pointer-events: none;
+
+    // Bold term name header via ::before
+    &::before {
+      content: attr(data-term) ":";
+      display: block;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+  }
+
+  &:hover .definition {
+    display: block;
+  }
+}
+
+th,
+td {
+  min-width: 3rem;
+}
+
+table.auto-width {
+  width: auto;
+  min-width: auto;
+}
+
+.table-wrapper:has(table.auto-width) {
+  display: inline-block;
+  max-width: 100%;
+  width: auto;
+}
