@@ -127,6 +127,7 @@ EOT
               
             when Operation::Parameter
               owner = obj.owner
+              p owner.format_target
               subject = owner
               block = owner.owner
               name = block.name + owner.name + obj.name
