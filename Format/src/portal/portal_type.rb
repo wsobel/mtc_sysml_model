@@ -2,13 +2,13 @@
 require 'type'
 require 'portal/helpers'
 
-class Type::Literal
-  include PortalHelpers
-end
+#class Type::Literal
+#  include PortalHelpers
+#end
 
-class Operation
-  include PortalHelpers
-end
+#class Operation
+#  include PortalHelpers
+#end
 
 class PortalType < Type
   include Document

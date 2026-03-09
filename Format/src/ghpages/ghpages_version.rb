@@ -123,16 +123,15 @@ EOT
               block = obj.owner
               subject = block
               name = block.name + obj.name
-              [ reason, 'Operation', "#{block.format_target} #{obj.format_target}" ]
+              [ reason, 'Operation', "#{block.format_target(obj.name)}" ]
               
             when Operation::Parameter
               owner = obj.owner
-              p owner.format_target
               subject = owner
               block = owner.owner
               name = block.name + owner.name + obj.name
               f = obj.deprecated ? "<strike>#{obj.name}</strike>" : obj.name
-              [ reason, 'Parameter', "#{block.format_target} #{owner.format_target}(#{f})" ]
+              [ reason, 'Parameter', "#{block.format_target(owner.name)}(#{f})" ]
               
             else
               $logger.warn "Cannot find info for #{obj.class} #{obj.name}"

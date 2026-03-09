@@ -1,5 +1,6 @@
 require 'active_support/inflector'
 require 'uri'
+require 'cgi'
 
 module GhPagesHelpers
   module Definitions
@@ -170,11 +171,13 @@ module GhPagesHelpers
     return block
   end
 
-  def format_target
+  def format_target(ref = nil)
+    sub = "::#{ref}" if ref
+    display = "`#{@name}#{sub}`"
+
     if page_path and File.exist?(expanded_page_path)
-      "[`#{@name}`]({% link #{page_path} %})"
-    else
-      "`#{@name}`"
+      index = "##{ref}" if ref
+      "[#{sub}]({% link #{page_path} %}#{index})"
     end
   end
 
@@ -245,7 +248,7 @@ module GhPagesHelpers
 
     op = type.operations.find { |o| o.name == operation } if type
     if op
-      op.format_target
+      model.format_target(op.name)
     else
       "`#{block}::#{operation}`"
     end
@@ -264,15 +267,21 @@ module GhPagesHelpers
       close = ''
       attrs = ''
       if col_opts = options[c]
-        if col_opts[:code]
+        code = col_opts[:code]
+        if code
           open = '<code>'
           close = '</code>'
           col_opts.delete(:code)
         end
+        markdown = col_opts[:markdown]
         attrs = ' ' + col_opts.map { |k, v| %{#{k}="#{v}"} }.join() unless col_opts.empty?
-        close = open = "\n" if col_opts[:markdown]
+        close = open = "\n" if markdown
       end
-      template << "<td#{attrs}>#{open}\#{r[#{i}]}#{close}</td>"      
+      if code
+        template << "<td#{attrs}>#{open}\#{CGI.escapeHTML(r[#{i}].to_s)}#{close}</td>"      
+      else
+        template << "<td#{attrs}>#{open}\#{r[#{i}]}#{close}</td>"      
+      end
     end
 
     lambda = eval "lambda { |r| %{#{template}} }"

@@ -1,6 +1,12 @@
 require 'type'
 require 'ghpages/helpers'
 
+class Type::Literal
+end
+
+class Operation
+end
+
 class GhPagesType < Type
   include GhPagesHelpers
   attr_accessor :page_path, :expanded_page_path
@@ -229,7 +235,7 @@ EOT
           results << [ par.name, type_name, convert_markdown(par.documentation.definition || '') ]
           nil
         else
-          dflt = "`#{par.default}`" if par.default
+          dflt = "#{par.default}" if par.default
           int = par.introduced || op.introduced
           dep = par.deprecated || op.deprecated
           pn = dep ? "<strike>#{par.name}</strike>" : par.name
@@ -255,10 +261,10 @@ EOT
 
 EOT
       write_table(f, [:Name, :Int, :Dep, :Type, :Multiplicity, :'Default Value', :Description], rows, 
-                  {Description: { markdown: 'block'}, :'Default Value' => { code: true }})
+                  {Description: { markdown: 'block'}, :'Default Value' => { code: true }, Type: { markdown: 'block' }})
 
       f.puts "\n#### Results:\n\n"
-      write_table(f, [:Name, :Type, :Description], results, {Description: { markdown: 'block'}})
+      write_table(f, [:Name, :Type, :Description], results, {Description: { markdown: 'block'}, Type: { markdown: 'block' }})
     end
   end
 
