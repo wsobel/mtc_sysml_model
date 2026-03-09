@@ -3,9 +3,13 @@ require 'ghpages/helpers'
 
 class GhPagesType < Type
   include GhPagesHelpers
+  attr_accessor :page_path, :expanded_page_path
 
   def initialize(model, e)
     super
+
+    @page_path = File.join(model.page_dir, "#{slug}.md")
+    @expanded_page_path = File.join(File.dirname(model.expanded_page_path), "#{slug}.md")
 
     lits = literals
     unless lits.empty?
@@ -24,8 +28,7 @@ class GhPagesType < Type
 
     $logger.info "  Generating page for #{@name}"        
 
-    filename = File.join(output_dir, "#{slug}.md")
-    File.open(filename, 'w') do |f|
+    File.open(@expanded_page_path, 'w') do |f|
       write_frontmatter(f, nav_order, parent_title, grand_parent)
       f.puts "\n# #{@name}"
       write_parents(f)
@@ -163,7 +166,6 @@ EOT
     end
     content = convert_markdown("#{doc} #{text}")
     [name, type_name, int, dep, mult, content]
-    #f.puts %{<tr><td>#{name}</td><td>#{type_name}</td><td>#{int}</td><td>#{dep}</td><td>#{mult}</td>\n<td markdown="block">\n\n#{content}\n\n</td>\n</tr>}
   end
 
   def write_relations(f)
@@ -180,37 +182,32 @@ EOT
 
     unless properties.empty?
       f.puts "\n## Properties\n\n"
-      #f.puts "\n<table><thead><tr><th>Name</th><th>Type</th><th>Int</th><th>Dep</th><th>Multiplicty</th><th>Description</th></tr></thead><tbody>"
-
       rows = properties.map do |r|
         wrte_relation(r)
       end
       write_table(f, [:Name, :Type, :Int, :Dep, :Multiplicity, :Description], 
                   rows, { Description: { markdown: 'block' }})
-      #f.puts "</tbody></table>"
     end
 
     unless relations.empty?
       f.puts "\n## Relations\n\n"
-      #f.puts "\n<table><thead><tr><th>Name</th><th>Type</th><th>Int</th><th>Dep</th><th>Multiplicty</th><th>Description</th></tr></thead><tbody>"
       rows = relations.map do |r|
         wrte_relation(r)
       end
       write_table(f, [:Name, :Type, :Int, :Dep, :Multiplicity, :Description], 
                   rows, { Description: { markdown: 'block' }})
-      #f.puts "\n</tbody></table>"
     end
   end
 
   def write_enumerations(f)
     # TODO: Make this into a table
     return if @literals.nil? || @literals.empty?
-    f.puts "\n## Enumeration Literals"
-    f.puts "\n| # | Literal | Int | Dep | Upd | Description |\n|---|---|---|---|---|---|"
-    literals.sort_by { |lit| lit.name }.map.with_index do |lit, i|
+    f.puts "\n## Enumeration Literals\n\n"
+    rows = literals.sort_by { |lit| lit.name }.map.with_index do |lit, i|
       content = convert_markdown(lit.description.to_s.gsub(/\s+/, ' ').strip)
-      f.puts "| #{i + 1} | `#{lit.name}` | #{lit.introduced} | #{lit.deprecated} | #{lit.updated} | #{content} |"
+      [lit.name, lit.introduced, lit.deprecated, lit.updated, content]
     end
+    write_table(f, [:Name, :Int, :Dep, :Upd, :Description], rows, { Description: { markdown: 'block'}})
   end
 
   def write_operations(f)
@@ -255,23 +252,13 @@ EOT
 | #{op.introduced} | #{op.deprecated} |  #{op.updated} |
 
 #### Parameters:
-<table><thead><tr><th>Name</th><th>Int</th><th>Dep</th><th>Type</th><th>Multiplicity</th><th>Default Value</th><th>Description</th></tr></thead><tbody>
-EOT
-      rows.each do |r|
-        f.puts "<tr>"
-        r.each { |c| f.puts "<td markdown=\"block\">\n#{c}\n</td>" }
-        f.puts "</tr>"
-      end
-      f.puts "</tbody></table>"
 
-      f.puts "\n#### Results:"
-      f.puts "\n<table><thead><tr><th>Name</th><th>Type</th><th>Documentation</th></tr></thead><tbody>"
-      results.each do |r|
-        f.puts "<tr>"
-        r.each { |c| f.puts "<td markdown=\"block\">\n#{c}\n</td>" }
-        f.puts "</tr>"
-      end
-      f.puts "</tbody></table>"
+EOT
+      write_table(f, [:Name, :Int, :Dep, :Type, :Multiplicity, :'Default Value', :Description], rows, 
+                  {Description: { markdown: 'block'}, :'Default Value' => { code: true }})
+
+      f.puts "\n#### Results:\n\n"
+      write_table(f, [:Name, :Type, :Description], results, {Description: { markdown: 'block'}})
     end
   end
 
@@ -279,13 +266,13 @@ EOT
     return if @constraints.empty?
 
     $logger.debug "Adding constraints to #{@name}"
-    f.puts "\n## Constraints"
+    f.puts "\n## Constraints\n\n"
 
-    f.puts "\n<table><thead><tr><th>Error Message</th><th>OCL Expression</th></tr></thead><tbody>"
-    @constraints.each do |c|
-      f.puts "\n<tr><td markdown=\"block\">\n\n#{convert_markdown(c.documentation)}\n\n</td><td markdown=\"block\">\n\n```\n#{c.ocl}\n```\n\n</td></tr>"
+   rows = @constraints.map do |c|
+      [convert_markdown(c.documentation), "```\n#{c.ocl}\n```"]
     end
-    f.puts "\n</tbody></table>"
+    write_table(f, [:'Error Message', :'OCL Expression'], rows, 
+                {:'Error Message' => { markdown: 'block'}, :'OCL Expression' => { markdown: 'block' }})
   end
 
   def write_children(f)
@@ -315,8 +302,4 @@ EOT
       f.puts
     end   
   end
-
-  def quote_yaml(text)
-    text.to_s.include?('"') ? "'#{text}'" : "\"#{text}\""
-  end  
 end

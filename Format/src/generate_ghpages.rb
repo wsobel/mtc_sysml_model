@@ -2,6 +2,7 @@ $: << File.dirname(__FILE__)
 
 require 'fileutils'
 require 'ghpages/ghpages_model'
+require 'ghpages/ghpages_version'
 
 class GhPagesGenerator
 
@@ -12,7 +13,8 @@ class GhPagesGenerator
                        "MTConnect",
                        "Development Process",
                        "Imports",
-                       "Supporting Documents"
+                       "Supporting Documents",
+                       "MTConnect Device Validation Suite"
     ]
   end
 
@@ -23,6 +25,9 @@ class GhPagesGenerator
   def generate
     dir = File.expand_path(File.join('..', './model'), File.dirname(__FILE__))
     FileUtils.mkdir_p(dir)
+    unless File.exist?(File.join(dir, 'figures'))
+      FileUtils.ln_s('figures', File.join(dir, 'figures'), relative: true)
+    end
 
     $logger.info "Generating GhPages documentation in #{dir}"
 
@@ -36,7 +41,9 @@ class GhPagesGenerator
     @top.find_data_types
     @top.find_definitions
 
-    GhPagesModel.generate_pages
+    order = GhPagesModel.generate_pages
+
+    GhPagesVersion.generate_versions(dir, order + 1)
   end
 
 end

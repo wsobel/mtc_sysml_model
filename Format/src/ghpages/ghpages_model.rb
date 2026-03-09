@@ -5,6 +5,7 @@ require 'ghpages/helpers'
 
 class GhPagesModel < Model
   include GhPagesHelpers
+  attr_reader :page_path, :expanded_page_path
 
   @@output_dir = nil
   @@generator  = nil
@@ -52,6 +53,8 @@ class GhPagesModel < Model
   def initialize(*args)
     super
     @title = "#{@name} Package"
+    @page_path = File.join(page_dir, 'index.md')
+    @expanded_page_path = File.join(@@output_dir, page_dir, 'index.md')
   end
 
   def self.generate_pages
@@ -73,8 +76,6 @@ class GhPagesModel < Model
       root.write_documentation(f)
     end
 
-
-
     # Gather top-level packages (direct children of the MTConnect root)
     top_level = @@models.values.select do |m|
       m.parent && (m.parent.name == 'MTConnect' || m.parent.name.nil?)
@@ -83,6 +84,8 @@ class GhPagesModel < Model
     top_level.sort_by { |m| TOP_ORDER.index(m.name) || TOP_ORDER.length }.each_with_index do |model, i|
       model.generate_page(nil, i + 2)
     end
+
+    top_level.length + 2
   end
 
   # Generate markdown pages for this model and recursively for children/types
@@ -90,12 +93,12 @@ class GhPagesModel < Model
   # nav_order     - position in the navigation
   # grand_parent  - Just-the-Docs `grand_parent:` value (for depth >= 3)
   def generate_page(parent_title, nav_order, grand_parent = nil)
-    dir = page_dir
+    dir = File.join(@@output_dir, page_dir)
     FileUtils.mkdir_p(dir)
 
     has_children = !public_types.empty? || !@children.empty?
 
-    File.open(File.join(dir, 'index.md'), 'w') do |f|
+    File.open(@expanded_page_path, 'w') do |f|
       write_frontmatter(f, @title, parent_title, nav_order, has_children, grand_parent)
       f.puts "\n# #{@title}\n"
       write_documentation(f)
@@ -116,10 +119,6 @@ class GhPagesModel < Model
     end
   end
 
-  def public_types
-    @types
-  end
-
   # Build the output directory path by walking ancestors
   def page_dir
     parts = []
@@ -128,7 +127,11 @@ class GhPagesModel < Model
       parts.unshift(slug(m.name))
       m = m.parent
     end
-    File.join(@@output_dir, *parts)
+    File.join(*parts)
+  end
+
+  def public_types
+    @types
   end
 
   def slug(name = @name)
@@ -158,8 +161,4 @@ class GhPagesModel < Model
     end
   end
 
-  def quote_yaml(text)
-    return nil if text.nil?
-    text.to_s.include?('"') ? "'#{text}'" : "\"#{text}\""
-  end
 end

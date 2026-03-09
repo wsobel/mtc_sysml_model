@@ -17,20 +17,6 @@ module GhPagesHelpers
     end
   end
 
-
-  def page_path
-    # relative to the Jekyll root (model dir)
-    parts = []
-    m = model
-    while m && m.name != 'MTConnect'
-      parts.unshift(m.slug)
-      m = m.parent
-    end
-    parts << "#{slug}.md"
-    File.join(*parts)
-  end
-
-
   def convert_macro(value, expand = true)
     if value =~ /([a-zA-Z0-9_]+)(\(([^\)]+)\))?/
       command = $1
@@ -163,10 +149,9 @@ module GhPagesHelpers
     end
   end
       
-  def format_version_link(name, version, text = version)
+  def format_version_link(version, path, text = version)
     if version >= '2.0'
-      ref = "##{id}" if id
-      %{[#{text}](https://model.mtconnect.org/versions/#{version}/#{name.downcase.gsub(/\s+/, '-')})}
+      %{[#{text}](https://model.mtconnect.org/versions/#{version}/#{path.sub(/\.md$/,'')}/)}
     else
       text
     end
@@ -186,7 +171,11 @@ module GhPagesHelpers
   end
 
   def format_target
-    return format_block(@name)
+    if page_path and File.exist?(expanded_page_path)
+      "[`#{@name}`]({% link #{page_path} %})"
+    else
+      "`#{@name}`"
+    end
   end
 
   def format_block(block)
@@ -238,8 +227,8 @@ module GhPagesHelpers
   def format_term(term, plural = false, expand = true)
     display = plural ? ActiveSupport::Inflector.pluralize(term) : term
     if expand and t = GhPagesType.term_for_name(term) and not t.documentation.empty?
-      body = convert_markdown(t.documentation.definition, false)
-      %{<span class="hoverterm">#{display}<span class="definition" data-term="#{term}">#{body}</span></span>}
+      body = convert_markdown(t.documentation.definition, false).gsub(/\s+/, ' ')
+      %{<span class="hoverterm">#{display}<span markdown="1" class="definition" data-term="#{term}">#{body}</span></span>}
     else
       "*#{display}*"
     end
@@ -278,7 +267,7 @@ module GhPagesHelpers
         if col_opts[:code]
           open = '<code>'
           close = '</code>'
-          col_opts.remove(:code)
+          col_opts.delete(:code)
         end
         attrs = ' ' + col_opts.map { |k, v| %{#{k}="#{v}"} }.join() unless col_opts.empty?
         close = open = "\n" if col_opts[:markdown]
@@ -294,5 +283,10 @@ module GhPagesHelpers
       f.puts "      <tr>#{lambda.call(row)}</tr>"
     end
     f.puts "</tbody></table>"
+  end
+
+  def quote_yaml(text)
+    return nil if text.nil?
+    text.to_s.include?('"') ? "'#{text}'" : "\"#{text}\""
   end
 end
