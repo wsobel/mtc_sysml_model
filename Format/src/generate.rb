@@ -48,19 +48,25 @@ end
 unless ARGV.first
   $logger.error "The directive docs must be given"
   $logger.error parser.help
-  exit
+  exit 1
 end
 
-xmi_file = File.join(File.dirname(__FILE__), '..', '..', 'MTConnect SysML Model.xml')
+$mtconnect_version = Options[:version]
+unless $mtconnect_version
+  $logger.error "MTConnect Version -v must be provided"
+  exit 1
+end
+
+$model_dir = File.expand_path(File.join('..', '..', "Version#{$mtconnect_version}"), File.dirname(__FILE__))
+xmi_file = File.join($model_dir, 'MTConnectSysMLModel.xml')
 unless File.exist?(xmi_file)
   $logger.error "Model XMI \"MTConnect SysML Model.xml\" not found."
-  exit
+  exit 1
 end
 
 xmi_node = Nokogiri::XML(File.open(xmi_file)).slop!
 $namespaces = Hash[xmi_node.namespaces.map { |k, v| [k.split(':').last, v] }]
 
-$mtconnect_version = Options[:version] ? Options[:version] : "X.X"
 $dataitemtypes = Hash.new
 
 operations = Set.new(ARGV)

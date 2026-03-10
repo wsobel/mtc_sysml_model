@@ -23,10 +23,14 @@ class GhPagesGenerator
   end
 
   def generate
-    dir = File.expand_path(File.join('..', './model'), File.dirname(__FILE__))
+    dir = File.expand_path(File.join('..', "Version#{$mtconnect_version}"), File.dirname(__FILE__))
     FileUtils.mkdir_p(dir)
     unless File.exist?(File.join(dir, 'figures'))
-      FileUtils.ln_s('figures', File.join(dir, 'figures'), relative: true)
+      FileUtils.ln_s(File.join($model_dir, 'figures'), File.join(dir, 'figures'))
+    end
+
+    File.open(File.join(dir, '_config_version.yml'), 'w') do |f|
+      f.puts "title: MTConnect SysML Model V#{$mtconnect_version}"
     end
 
     $logger.info "Generating GhPages documentation in #{dir}"

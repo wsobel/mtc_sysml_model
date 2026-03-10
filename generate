@@ -1,10 +1,28 @@
 #!/bin/sh
 
 if [ $# -lt 2 ] ; then
-  echo "Usage: generate <mtc version> <model version>"
+  echo "Usage: generate <mtc version>"
   exit 1
 fi
 
 cd Format
 
-bundle exec ruby src/generate.rb -v $1 -m $2  portal
+bundle exec ruby src/generate.rb -v $1 ghpages
+cd docs
+rm -r source
+mkdir source
+cd source
+ln -s ../_config.yml \
+      ../_includes \
+      ../_layouts
+      ../_sass \
+      ../_site \
+      ../404.html \
+      ../AssetInformationModel \
+      ../assets \
+      .
+ln -s ../../Version${$1}/figures .
+ln -s ../../Format/model/* .
+
+cd ..
+bin/jekyll build -s ./source --config ./_config.yml,_config_version.yml -b /Version${$1}
