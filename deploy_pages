@@ -19,7 +19,7 @@ begin
 
   puts "Removing the old content and deploying the new"
   command = "ssh deploy@projects.mtconnect.org 'cd /opt/redmine/model/root && " + 
-      "rm -r #{directories.join(' ')} && " + 
+      "rm -rf #{directories.join(' ')} && " + 
       "tar -xzf ~/deploy.tgz && " + 
       "rm ~/deploy.tgz'"
   puts command
