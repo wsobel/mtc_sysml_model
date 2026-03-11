@@ -79,8 +79,7 @@ jobs:
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
-        # Automatically uploads an artifact from the './_site' directory by default
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: deploy
           path: ./deploy
@@ -114,7 +113,5 @@ jobs:
       - name: Deploy to MTConnect Projects site
         id: deployment
         run: |
-          ls -l
-          ls -l deploy
           ssh-keyscan projects.mtconnect.org >> ~/.ssh/known_hosts
           ./deploy_pages
