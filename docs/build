@@ -17,11 +17,11 @@ ARGV.each do |version|
 
   FileUtils.mkdir_p source
 
-  %w{_config.yml _includes _layouts _sass _site 404.html assets}.each do |d|
+  %w{_config.yml _includes _layouts _sass 404.html assets}.each do |d|
     FileUtils.ln_s(d, File.join(source, d), relative: true)
   end
 
-  Dir["../Format/Version#{version}/*"].each do |d|
+  Dir["../build/Version#{version}/*"].each do |d|
     FileUtils.ln_s(File.expand_path(d), File.join(source, File.basename(d)))
   end
 

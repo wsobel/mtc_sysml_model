@@ -289,8 +289,7 @@ EOT
       f.puts "\n## Organizes"
       f.puts "\n{: .auto-width }\n| Name | Int | Dep |"
       f.puts "|---|---|---|"
-      [@relation.source.type].concat(@relation.source.type.children.sort_by(&:name)).
-                each do |t|
+      [@relation.source.type].concat(@relation.source.type.children.sort_by(&:name)).each do |t|
         f.puts "| #{t.format_target} | #{t.introduced} | #{t.deprecated} |"
       end
       f.puts

@@ -6,5 +6,5 @@ docs/vendor/
 Format/model/
 docs/model
 Format/Gemfile.lock
-Format/Version*
-deploy
+deploy/
+build/

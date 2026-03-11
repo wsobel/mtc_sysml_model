@@ -1,9 +1,9 @@
-<div style="position: fixed; top: 10px; right: 20px; z-index: 1000;">
-  <button id="feedback-btn" style="height: 2rem;">Comment</button>
-  <div id="feedback-panel" style="display: none; position: absolute; top: 1rem; right: 1rem; width: 25rem; background: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+<div class="feedback-wrapper">
+  <button id="feedback-btn" class="feedback-btn">Comment</button>
+  <div id="feedback-panel" class="feedback-panel">
     <h4>Submit Comment</h4>
-    <input type="text" id="feedback-subject" placeholder="Subject" style="width: 100%; margin-bottom: 8px;">
-    <textarea id="feedback-text" rows="5" style="width: 100%;"></textarea>
+    <input type="text" id="feedback-subject" placeholder="Subject"/>
+    <textarea id="feedback-text" rows="5"></textarea>
     <br/>
     <button id="feedback-submit">Send</button>
     <button id="feedback-cancel">Cancel</button>
