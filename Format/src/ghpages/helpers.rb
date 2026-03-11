@@ -213,7 +213,7 @@ module GhPagesHelpers
     end
 
     if b
-      %{[`#{b.name}::#{prop}`]({% link #{b.page_path} %}#{prop})}
+      %{[`#{b.name}::#{prop}`]({% link #{b.page_path} %}##{prop})}
     else
       "`#{property}`"
     end

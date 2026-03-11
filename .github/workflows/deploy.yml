@@ -82,6 +82,7 @@ jobs:
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v4
         with:
+          name: deploy
           path: ./deploy
 
   # Deployment job
@@ -95,6 +96,23 @@ jobs:
       run:
         working-directory: ./deploy
     steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Download deploy artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: deploy
+          path: ./deploy
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1        
+        with:
+          ruby-version: "3.4"
+      - name: Install SSH keys
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        run: |
+          ssh-keyscan projects.mtconnect.org >> ~/.ssh/known_hosts
+          ./deploy_pages
