@@ -114,5 +114,7 @@ jobs:
       - name: Deploy to MTConnect Projects site
         id: deployment
         run: |
+          ls -l
+          ls -l deploy
           ssh-keyscan projects.mtconnect.org >> ~/.ssh/known_hosts
           ./deploy_pages
