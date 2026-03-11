@@ -31,7 +31,7 @@ class GhPagesGenerator
 
     File.open(File.join(dir, '_config_version.yml'), 'w') do |f|
       f.puts "title: MTConnect SysML Model V#{$mtconnect_version}"
-      f.puts "comment_url: #{ENV['COMMENT_URL'] || 'https://projects.mtconnect.org/cameo_comment'}"
+      f.puts "comment_url: #{ENV['COMMENT_URL'] || 'https://projects.mtconnect.org'}"
     end
 
     $logger.info "Generating GhPages documentation in #{dir}"
